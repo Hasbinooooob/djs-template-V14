@@ -31,7 +31,7 @@ client.on("messageCreate", async (message) => {
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     if (command) {
       if(command.ownerOnly) {
-        if(!config.bot.ownerId.includes(message.author.id)) return
+        if(!config.bot.ownerId.includes(message.author.id)) return message.reply({content: "you cant use this command", allowedMentions: {repliedUser: true}})
       }
       if (!message.member.permissions.has(command.memberpermissions || [])) return message.reply({content: `** You don't Have \`${command.memberpermissions}\` To Run Command.. **`})
       if (!message.guild.members.me.permissions.has(command.botPermisions || [])) return message.reply({content: `** I don't Have \`${command.memberpermissions}\` To Run Command.. **`})

@@ -6,7 +6,6 @@ module.exports = {
   description: "ping command",
   botPermissions: [],
   defaultMemberPermissions: [PermissionFlagsBits.SendMessages],
-  dmPermission: false,
   type: ApplicationCommandType.ChatInput,
   options: [],
   /**
@@ -16,7 +15,7 @@ module.exports = {
    */
   run: async (client, interaction, args) => {
     try {
-      interaction.followUp({content: `\`${client.ws.ping}ms\``})
+      interaction.followUp({content: `\`${client.ws.ping}\`ms`})
     } catch (error) {
       console.log(error.stack);
       interaction.editReply({

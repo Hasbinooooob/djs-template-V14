@@ -8,6 +8,7 @@ module.exports = {
   description: "",
   memberpermissions: [],
   botPermissions: [],
+  ownerOnly: false,
   usage: "",
   /**
    * @param {Client} client

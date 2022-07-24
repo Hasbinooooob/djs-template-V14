@@ -1,20 +1,16 @@
-const { Client, Collection, Partials} = require("discord.js");
+const { Client, Collection, Partials, GatewayIntentBits} = require("discord.js");
 const fs = require("fs");
 const config = require("./config/config.json")
+const colors = require("colors")
 // client
 const client = new Client({
-  messageCacheLifetime: 60,
-  fetchAllMembers: false,
-  messageCacheMaxSize: 10,
-  restTimeOffset: 0,
-  restWsBridgetimeout: 100,
   shards: "auto",
   partials: [Partials.Channel, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.Message, Partials.Reaction, Partials.ThreadMember, Partials.User],
   allowedMentions: {
     parse: ["roles", "users", "everyone"],
     repliedUser: true,
   },
-  intents: 131071,
+  intents: 131071
 });
 module.exports = client;
 client.setMaxListeners(50);
@@ -38,7 +34,7 @@ function handlers() {
 }
 handlers();
 client.login(config.bot.token);
-module.exports.requirehandlers = requirehandlers;
+module.exports.handlers = handlers
 
 //error handling
 process.on("unhandledRejection", (reason, p) => {
@@ -54,9 +50,10 @@ process.on("uncaughtExceptionMonitor", (err, origin) => {
   console.log(err, origin);
 });
 process.on("multipleResolves", (type, promise, reason) => {
-  console.log(" [Error_Handling] :: Multiple Resolves");
-  console.log(type, promise, reason);
+  // console.log(" [Error_Handling] :: Multiple Resolves");
+  // console.log(type, promise, reason);
 });
+
 
 
 

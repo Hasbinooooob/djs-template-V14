@@ -16,11 +16,10 @@ client.on('interactionCreate', async (interaction) => {
                 });
             } else if (option.value) args.push(option.value);
         }
-        interaction.member = interaction.guild.members.cache.get(interaction.user.id);
         if (cmd) {
             // checking bot perms
             if(cmd) {
-                if(!interaction.guild.me.permissions.has(cmd.botPermissions || [])) {
+                if(!interaction.guild.members.me.permissions.has(cmd.botPermissions || [])) {
                     return interaction.followUp({
                         embeds: [
                             new EmbedBuilder()
@@ -34,7 +33,7 @@ client.on('interactionCreate', async (interaction) => {
         }
     }
     // Context Menu Handling
-    if (interaction.isContextMenu()) {
+    if (interaction.isContextMenuCommand()) {
         await interaction.deferReply({ ephemeral: true });
         const command = client.slashCommands.get(interaction.commandName);
         if (command) command.run(client, interaction);

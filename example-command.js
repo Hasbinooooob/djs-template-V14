@@ -32,7 +32,6 @@ module.exports = {
   description: "",
   botPermissions: [],
   defaultMemberPermissions: [],
-  dmPermission: false,
   type: ApplicationCommandType.ChatInput,
   options: [],
   /**
