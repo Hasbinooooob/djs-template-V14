@@ -1,0 +1,10 @@
+{
+    "bot": {
+        "token": "secret token",
+        "prefix": "the prefix",
+        "ownerId": "your id"
+    },
+    "embed": {
+        "color": "Random"
+    }
+}
